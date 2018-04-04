@@ -5,6 +5,7 @@ import json
 import pandas as pd
 import time
 from bs4 import BeautifulSoup
+from function.mail_func import exchange, premiumFunc, mail
 from hdfs import InsecureClient
 import os
 
