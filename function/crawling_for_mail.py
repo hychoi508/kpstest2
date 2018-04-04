@@ -7,7 +7,7 @@ import time
 from bs4 import BeautifulSoup
 from function.mail_func import exchange, premiumFunc, mail
 from hdfs import InsecureClient
-import os
+
 
 
   
@@ -229,9 +229,12 @@ def json_to_file(data,coinone,i):
     filename=coinone+i
     data=pd.DataFrame(data)
     #data.to_csv('data/'+filename+'.csv')
-    client_hdfs=InsecureClient('http://10.1.43.149:50070')
+    client_hdfs= InsecureClient('http://10.1.43.149:50070')
+    print('1')
     #fileaddress='/coindata1'
-    with client_hdfs.write('/coindata1/'+filename+'.csv', encoding = 'utf-8') as writer:data.to_csv(writer)
+    filenamesave='/user/'+filename+'.csv'
+    print(filenamesave)
+    with client_hdfs.write(filenamesave, encoding = 'utf-8') as writer:data.to_csv(writer)
 
 
 
