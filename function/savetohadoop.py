@@ -15,13 +15,13 @@ def savetohadoop(filename):
     os.chdir('/home/rabbit/hadoop2/')
     subprocess.call('./bin/hdfs dfs -ls /test', shell=True)
     #python이 실행중인 경로명
-    #pwd_python=subprocess.call('pwd', shell=True)
+    pwd_python=subprocess.call('pwd', shell=True)
     file=filename
-    subprocess.call('./bin/hdfs dfs -put /home/rabbit/test/teat1/kps_ml/data/'+file+'.csv /coindata1', shell=True)
+    subprocess.call('./bin/hdfs dfs -put '+pwd_python+'/data/'+file+'.csv /user/hdfs/coindata1', shell=True)
 
-#
-#def savetohadoop_d(dataframe,filename):
-#    client_hdfs = InsecureClient('http://http://10.1.43.149:50070')
-#    with client_hdfs.write('/user/hdfs/coindata2/'+filename+'.csv', encoding = 'utf-8') as writer:
-#        dataframe.to_csv(writer)                                
-#       
+
+def savetohadoop_d(dataframe,filename):
+    client_hdfs = InsecureClient('http://http://10.1.43.149:50070')
+    with client_hdfs.write('/user/hdfs/coindata2/'+filename+'.csv', encoding = 'utf-8') as writer:
+        dataframe.to_csv(writer)                                
+       

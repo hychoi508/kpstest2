@@ -6,7 +6,7 @@ import pandas as pd
 import time
 from bs4 import BeautifulSoup
 from function.mail_func import exchange, premiumFunc, mail
-from function.savetohadoop import savetohadoop, savetohadoop_d
+#from function.savetohadoop import savetohadoop, savetohadoop_d
   
 def crawling(x='bithumb',y='poloniex') :
     url={'bithumb':"https://api.bithumb.com/public/ticker/BTC",
@@ -226,7 +226,7 @@ def json_to_file(data,coinone,i):
     filename=coinone+i
     data=pd.DataFrame(data)
     data.to_csv('data/'+filename+'.csv')
-    savetohadoop_d(data,filename)
+    #savetohadoop_d(data,filename)
     #savetohadoop(filename)
 
 
